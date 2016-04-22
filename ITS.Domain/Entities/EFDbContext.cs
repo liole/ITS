@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace ITS.Models
+namespace ITS.Domain
 {
 	public class EFDbContext : DbContext
 	{

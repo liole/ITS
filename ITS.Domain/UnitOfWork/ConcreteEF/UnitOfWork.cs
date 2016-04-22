@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ITS.Models.UnitOfWork.Abstract;
+using ITS.Domain.UnitOfWork.Abstract;
 
-namespace ITS.Models.UnitOfWork.ConcreteEF
+namespace ITS.Domain.UnitOfWork.ConcreteEF
 {
 	public class UnitOfWork : IUnitOfWork
 	{

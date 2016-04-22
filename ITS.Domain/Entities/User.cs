@@ -4,24 +4,29 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace ITS.Models
+namespace ITS.Domain
 {
-	public class Test
+	public class User
 	{
 		public int ID { get; set; }
 
 		[Required]
-		public string Name { get; set; }
+		public string FirstName { get; set; }
 		[Required]
-		public int SubjectID { get; set; }
+		public string LastName { get; set; }
 		[Required]
-		public bool Randomize { get; set; }
+		public string Login { get; set; }
 		[Required]
-		public int Mark { get; set; }
+		public string Password { get; set; }
+		[Required]
+		public UserRole Role { get; set; }
 
-		public virtual Subject Subject { get; set; }
-		public virtual IEnumerable<Question> Questions { get; set; }
 		public virtual IEnumerable<Group> Groups { get; set; }
 		public virtual IEnumerable<Result> Results { get; set; }
+	}
+
+	public enum UserRole 
+	{
+		Student, Teacher, Admin
 	}
 }

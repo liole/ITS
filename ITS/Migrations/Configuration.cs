@@ -4,17 +4,17 @@ namespace ITS.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-	using ITS.Models;
+	using ITS.Domain;
 	using System.Web.Helpers;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ITS.Models.EFDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ITS.Domain.EFDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ITS.Models.EFDbContext context)
+        protected override void Seed(ITS.Domain.EFDbContext context)
         {
 			context.Users.AddOrUpdate(
 				new User()

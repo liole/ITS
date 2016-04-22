@@ -136,19 +136,6 @@
       <DependentUpon>201604051142592_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ABCDQuestion.cs" />
-    <Compile Include="Models\EFDbContext.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Result.cs" />
-    <Compile Include="Models\Subject.cs" />
-    <Compile Include="Models\Test.cs" />
-    <Compile Include="Models\TextQuestion.cs" />
-    <Compile Include="Models\UnitOfWork\Abstract\IGenericRepository.cs" />
-    <Compile Include="Models\UnitOfWork\Abstract\IUnitOfWork.cs" />
-    <Compile Include="Models\UnitOfWork\ConcreteEF\GenericRepository.cs" />
-    <Compile Include="Models\UnitOfWork\ConcreteEF\UnitOfWork.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,17 +158,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\ModelClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201604051142592_Init.resx">
       <DependentUpon>201604051142592_Init.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITS.Domain\ITS.Domain.csproj">
+      <Project>{2ef6fbf0-0ba7-41b1-bed8-50d420212410}</Project>
+      <Name>ITS.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace ITS.Models.UnitOfWork.ConcreteEF
+namespace ITS.Domain.UnitOfWork.ConcreteEF
 {
 	public class GenericRepository<TEntity> : Abstract.IGenericRepository<TEntity> where TEntity : class 
 	{
