@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201604051142592_Init.Designer.cs">
       <DependentUpon>201604051142592_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604220936150_TestCreator.cs" />
+    <Compile Include="Migrations\201604220936150_TestCreator.Designer.cs">
+      <DependentUpon>201604220936150_TestCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +170,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604051142592_Init.resx">
       <DependentUpon>201604051142592_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604220936150_TestCreator.resx">
+      <DependentUpon>201604220936150_TestCreator.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

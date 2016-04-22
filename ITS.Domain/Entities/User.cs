@@ -21,8 +21,9 @@ namespace ITS.Domain
 		[Required]
 		public UserRole Role { get; set; }
 
-		public virtual IEnumerable<Group> Groups { get; set; }
-		public virtual IEnumerable<Result> Results { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
+        public virtual ICollection<Test> Tests { get; set; }
 	}
 
 	public enum UserRole 

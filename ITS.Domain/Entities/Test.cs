@@ -18,10 +18,13 @@ namespace ITS.Domain
 		public bool Randomize { get; set; }
 		[Required]
 		public int Mark { get; set; }
+        [Required]
+        public int UserID { get; set; }
 
 		public virtual Subject Subject { get; set; }
-		public virtual IEnumerable<Question> Questions { get; set; }
-		public virtual IEnumerable<Group> Groups { get; set; }
-		public virtual IEnumerable<Result> Results { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
 	}
 }

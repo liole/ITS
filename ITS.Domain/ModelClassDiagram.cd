@@ -1,90 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ITS.Models.ABCDQuestion">
+  <Class Name="ITS.Domain.ABCDQuestion">
     <Position X="12" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAwCE=</HashCode>
-      <FileName>Models\ABCDQuestion.cs</FileName>
+      <FileName>Entities\ABCDQuestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Answer" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ITS.Models.Group">
+  <Class Name="ITS.Domain.Group">
     <Position X="4" Y="4" Width="1.5" />
-    <AssociationLine Name="Tests" Type="ITS.Models.Test" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Tests" Type="ITS.Domain.Test" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.062" Y="4" />
-        <Point X="5.062" Y="2.438" />
-        <Point X="10" Y="2.438" />
+        <Point X="4.48" Y="4" />
+        <Point X="4.48" Y="2.188" />
+        <Point X="10" Y="2.188" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>EAAAACAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Group.cs</FileName>
+      <FileName>Entities\Group.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Tests" />
-      <Property Name="Users" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="ITS.Models.Question">
+  <Class Name="ITS.Domain.Question">
     <Position X="13.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAEAAAAAEAAAAAEAAAACAAAAAA=</HashCode>
-      <FileName>Models\Question.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAAgAAEAAAAAEAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Entities\Question.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Test" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ITS.Models.Result">
+  <Class Name="ITS.Domain.Result">
     <Position X="10" Y="3.75" Width="1.5" />
-    <AssociationLine Name="User" Type="ITS.Models.User" FixedToPoint="true">
-      <Path>
-        <Point X="10" Y="4.312" />
-        <Point X="8.75" Y="4.312" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAABgAAAAAAAgAAAAAAEAAgAAAAAAAAAAACACAAAAAA=</HashCode>
-      <FileName>Models\Result.cs</FileName>
+      <FileName>Entities\Result.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Test" />
       <Property Name="User" />
+      <Property Name="Test" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ITS.Models.Subject">
-    <Position X="7" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Subject.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Tests" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="ITS.Models.Test">
+  <Class Name="ITS.Domain.Test">
     <Position X="10" Y="0.75" Width="1.5" />
-    <AssociationLine Name="Groups" Type="ITS.Models.Group" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Groups" Type="ITS.Domain.Group" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="10" Y="2.125" />
-        <Point X="4.75" Y="2.125" />
+        <Point X="10" Y="2.312" />
+        <Point X="4.75" Y="2.312" />
         <Point X="4.75" Y="4" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="Questions" Type="ITS.Models.Question" FixedToPoint="true">
+    <AssociationLine Name="User" Type="ITS.Domain.User" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="11.5" Y="1.25" />
-        <Point X="13.25" Y="1.25" />
+        <Point X="10" Y="2.562" />
+        <Point X="8.125" Y="2.562" />
+        <Point X="8.125" Y="3.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAEAAEAAAgAAAAIAAAASACAAAAAAEAACAAAAAAAA=</HashCode>
-      <FileName>Models\Test.cs</FileName>
+      <HashCode>AAABAEAAEAAAgAAAAIAAAAyACAAAAAAEAACAAAAAAAA=</HashCode>
+      <FileName>Entities\Test.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
+      <Property Name="User" />
       <Property Name="Subject" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
@@ -93,45 +78,57 @@
       <Property Name="Results" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="ITS.Models.TextQuestion">
+  <Class Name="ITS.Domain.TextQuestion">
     <Position X="14.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>Models\TextQuestion.cs</FileName>
+      <FileName>Entities\TextQuestion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ITS.Models.User">
+  <Class Name="ITS.Domain.User">
     <Position X="7.25" Y="3.75" Width="1.5" />
-    <AssociationLine Name="Groups" Type="ITS.Models.Group" FixedToPoint="true">
+    <AssociationLine Name="Tests" Type="ITS.Domain.Test" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="4.312" />
-        <Point X="5.5" Y="4.312" />
+        <Point X="8.375" Y="3.75" />
+        <Point X="8.375" Y="2.812" />
+        <Point X="10" Y="2.812" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAgAAAEAAAAAAACAAAAAACAAAQAAAAAAg=</HashCode>
-      <FileName>Models\User.cs</FileName>
+      <HashCode>EAAAAEAAAAAAgAAAEAAAAAAACAAAAAACAAAQAAAAAAg=</HashCode>
+      <FileName>Entities\User.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Role" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Results" />
       <Property Name="Groups" />
+      <Property Name="Results" />
+      <Property Name="Tests" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Enum Name="ITS.Models.ABCDAnswer">
+  <Class Name="ITS.Domain.Subject">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Subject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tests" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="ITS.Domain.ABCDAnswer">
     <Position X="12" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApAEAAAA=</HashCode>
-      <FileName>Models\ABCDQuestion.cs</FileName>
+      <FileName>Entities\ABCDQuestion.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="ITS.Models.UserRole">
+  <Enum Name="ITS.Domain.UserRole">
     <Position X="7.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\User.cs</FileName>
+      <FileName>Entities\User.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
