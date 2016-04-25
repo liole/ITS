@@ -13,10 +13,17 @@ namespace ITS
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: null,
+                url: "{Controller}/{List}/Page{page}",
+                defaults: new { Controller = "User", action = "List" }
+                );
+        
+
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
-				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+				defaults: new { controller = "User", action = "List", id = UrlParameter.Optional }
 			);
 		}
 	}
