@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ITS.Domain.ABCDQuestion">
+  <Class Name="ITS.Domain.Entities.ABCDQuestion">
     <Position X="12" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAwCE=</HashCode>
@@ -10,9 +10,9 @@
       <Property Name="Answer" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ITS.Domain.Group">
+  <Class Name="ITS.Domain.Entities.Group">
     <Position X="4" Y="4" Width="1.5" />
-    <AssociationLine Name="Tests" Type="ITS.Domain.Test" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Tests" Type="ITS.Domain.Entities.Test" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="4.48" Y="4" />
         <Point X="4.48" Y="2.188" />
@@ -27,7 +27,7 @@
       <Property Name="Tests" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="ITS.Domain.Question">
+  <Class Name="ITS.Domain.Entities.Question">
     <Position X="13.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAgAAEAAAAAEAAAAAAAAAACAAAAAA=</HashCode>
@@ -37,7 +37,7 @@
       <Property Name="Test" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ITS.Domain.Result">
+  <Class Name="ITS.Domain.Entities.Result">
     <Position X="10" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABgAAAAAAAgAAAAAAEAAgAAAAAAAAAAACACAAAAAA=</HashCode>
@@ -48,16 +48,16 @@
       <Property Name="Test" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ITS.Domain.Test">
+  <Class Name="ITS.Domain.Entities.Test">
     <Position X="10" Y="0.75" Width="1.5" />
-    <AssociationLine Name="Groups" Type="ITS.Domain.Group" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Groups" Type="ITS.Domain.Entities.Group" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="10" Y="2.312" />
         <Point X="4.75" Y="2.312" />
         <Point X="4.75" Y="4" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="User" Type="ITS.Domain.User" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="User" Type="ITS.Domain.Entities.User" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="10" Y="2.562" />
         <Point X="8.125" Y="2.562" />
@@ -78,16 +78,16 @@
       <Property Name="Results" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="ITS.Domain.TextQuestion">
+  <Class Name="ITS.Domain.Entities.TextQuestion">
     <Position X="14.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Entities\TextQuestion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ITS.Domain.User">
+  <Class Name="ITS.Domain.Entities.User">
     <Position X="7.25" Y="3.75" Width="1.5" />
-    <AssociationLine Name="Tests" Type="ITS.Domain.Test" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Tests" Type="ITS.Domain.Entities.Test" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="8.375" Y="3.75" />
         <Point X="8.375" Y="2.812" />
@@ -107,7 +107,7 @@
       <Property Name="Tests" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="ITS.Domain.Subject">
+  <Class Name="ITS.Domain.Entities.Subject">
     <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -117,14 +117,14 @@
       <Property Name="Tests" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Enum Name="ITS.Domain.ABCDAnswer">
+  <Enum Name="ITS.Domain.Entities.ABCDAnswer">
     <Position X="12" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApAEAAAA=</HashCode>
       <FileName>Entities\ABCDQuestion.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="ITS.Domain.UserRole">
+  <Enum Name="ITS.Domain.Entities.UserRole">
     <Position X="7.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>

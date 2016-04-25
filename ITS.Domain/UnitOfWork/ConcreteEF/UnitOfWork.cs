@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ITS.Domain.UnitOfWork.Abstract;
+using ITS.Domain.Entities;
 
 namespace ITS.Domain.UnitOfWork.ConcreteEF
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace ITS.Domain
+namespace ITS.Domain.Entities
 {
 	public class Result
 	{
