@@ -14,6 +14,8 @@ namespace ITS.Controllers
     {
         private IUnitOfWork unitOfWork;
 
+        public int PageSize = 4;
+
         public UserController(IUnitOfWork uow)
         {
             this.unitOfWork = uow;
@@ -22,16 +24,23 @@ namespace ITS.Controllers
         //
         // GET: /User/
 
-        public ViewResult List()
+        public ViewResult List(int page = 1)
         {
             UsersListViewModel model = new UsersListViewModel
             {
                 Users = unitOfWork.Users.GetAll()
                 .OrderBy(o => o.LastName).ToList()
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = unitOfWork.Users.GetAll().Count()
+                }
             };
 
             return View(model);
-            //return View(unitOfWork.Users.GetAll().ToList());
         }
 
         //
