@@ -5,36 +5,37 @@
 @model ITS.Models.GroupsListViewModel
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "All Users";
 }
 
-<h2>List</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Group Name
-        </th>
-    </tr>
-
-    @foreach (var item in Model.Groups)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-
-</table>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>All Groups</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-center">Group Name</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            @foreach (var item in Model.Groups)
+            {
+                <tr>
+                    <td class="text-center">@Html.ActionLink(item.Name, "Edit", new { item.ID })</td>
+                    <td class="text-center">
+                        @using (Html.BeginForm("Delete", "Group"))
+                        {
+                            <input type="submit" class="btn-warning btn-xs" value="Delete" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add new group", "Create", null, new { @class = "btn btn-success" })
+    </div>
+</div>
 
 <div>
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
