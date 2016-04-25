@@ -10,6 +10,7 @@ namespace ITS.Models
 {
     public class UsersListViewModel
     {
-        public ICollection<User> Users { get; set; }
+        public IEnumerable<User> Users { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@using ITS.Domain.UnitOfWork.Abstract
 @using ITS.Domain.UnitOfWork.ConcreteEF
 @using ITS.Domain.Entities
+@using ITS.HtmlHelpers
 @model ITS.Models.UsersListViewModel
 
 @{
@@ -22,9 +23,6 @@
         </th>
         <th>
             Login
-        </th>
-        <th>
-            Password
         </th>
         <th></th>
     </tr>
@@ -49,3 +47,7 @@
 }
 
 </table>
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {page = x }))
+</div>
