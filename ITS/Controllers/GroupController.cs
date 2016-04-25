@@ -10,26 +10,25 @@ using ITS.Models;
 
 namespace ITS.Controllers
 {
-    public class UserController : Controller
+    public class GroupController : Controller
     {
+        //
+        // GET: /Group/
         private IUnitOfWork unitOfWork;
 
         public int PageSize = 10;
 
-        public UserController(IUnitOfWork uow)
+        public GroupController(IUnitOfWork uof)
         {
-            this.unitOfWork = uow;
+            this.unitOfWork = uof;
         }
-
-        //
-        // GET: /User/
 
         public ViewResult List(int page = 1)
         {
-            UsersListViewModel model = new UsersListViewModel
+            GroupsListViewModel model = new GroupsListViewModel
             {
-                Users = unitOfWork.Users.GetAll()
-                .OrderBy(o => o.LastName).ToList()
+                Groups = unitOfWork.Groups.GetAll()
+                .OrderBy(o => o.Name).ToList()
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
                 PagingInfo = new PagingInfo
@@ -44,7 +43,7 @@ namespace ITS.Controllers
         }
 
         //
-        // GET: /User/Details/5
+        // GET: /Group/Details/5
 
         public ActionResult Details(int id)
         {
@@ -52,22 +51,22 @@ namespace ITS.Controllers
         }
 
         //
-        // GET: /User/Create
+        // GET: /Group/Create
 
         public ActionResult Create()
         {
-            return View(new User());
+            return View(new Group());
         }
 
         //
-        // POST: /User/Create
+        // POST: /Group/Create
 
         [HttpPost]
-        public ActionResult Create(User user)
+        public ActionResult Create(Group group)
         {
             try
             {
-                unitOfWork.Users.Insert(user);
+                unitOfWork.Groups.Insert(group);
                 unitOfWork.Save();
 
                 return RedirectToAction("List");
@@ -75,57 +74,58 @@ namespace ITS.Controllers
             catch
             {
                 ViewBag.Error = true;
-                return View(user);
+                return View(group);
             }
         }
 
         //
-        // GET: /User/Edit/5
+        // GET: /Group/Edit/5
 
         public ActionResult Edit(int id)
         {
-            var user = unitOfWork.Users.GetByID(id);
-            return View(user);
+            var group = unitOfWork.Groups.GetByID(id);
+
+            return View(group);
         }
 
         //
-        // POST: /User/Edit/5
+        // POST: /Group/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, User user)
+        public ActionResult Edit(int id, Group group)
         {
             try
             {
-                unitOfWork.Users.Update(user);
+                unitOfWork.Groups.Update(group);
                 unitOfWork.Save();
 
                 return RedirectToAction("List");
             }
             catch
             {
-                ViewBag.Error = true;
-                return View(user);
+                return View();
             }
         }
 
         //
-        // GET: /User/Delete/5
+        // GET: /Group/Delete/5
 
         public ActionResult Delete(int id)
         {
-            var user = unitOfWork.Users.GetByID(id);
-            return View(user);
+            var group = unitOfWork.Groups.GetByID(id);
+            return View(group);
         }
 
         //
-        // POST: /User/Delete/5
+        // POST: /Group/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, User user)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                unitOfWork.Users.Delete(id);
+                unitOfWork.Groups.Delete(id);
+
                 return RedirectToAction("List");
             }
             catch

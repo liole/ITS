@@ -127,11 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlHelpers\PaginhHelpers.cs" />
+    <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201604051142592_Init.cs" />
     <Compile Include="Migrations\201604051142592_Init.Designer.cs">
@@ -142,6 +143,7 @@
       <DependentUpon>201604220936150_TestCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\GroupsListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\UsersListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -184,6 +186,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Group\List.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -7,7 +7,7 @@ using ITS.Models;
 
 namespace ITS.HtmlHelpers
 {
-    public static class PaginhHelpers
+    public static class PagingHelpers
     {
         public static MvcHtmlString PageLinks(this HtmlHelper html, PagingInfo pagingInfo, Func<int, string> pageUrl)
         {

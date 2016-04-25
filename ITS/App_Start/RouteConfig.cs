@@ -15,7 +15,7 @@ namespace ITS
 
             routes.MapRoute(
                 name: null,
-                url: "{Controller}/{List}/Page{page}",
+                url: "{Controller}/{List}/{page}",
                 defaults: new { Controller = "User", action = "List" }
                 );
         

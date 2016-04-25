@@ -1,0 +1,42 @@
+﻿@using ITS.Domain.UnitOfWork.Abstract
+@using ITS.Domain.UnitOfWork.ConcreteEF
+@using ITS.Domain.Entities
+@using ITS.HtmlHelpers
+@model ITS.Models.GroupsListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Group Name
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Groups)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
+
