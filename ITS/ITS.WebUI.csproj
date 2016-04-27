@@ -146,6 +146,10 @@
     <Compile Include="Migrations\201604271510581_UserGroup.Designer.cs">
       <DependentUpon>201604271510581_UserGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604271524119_NotRequiredPasswordField.cs" />
+    <Compile Include="Migrations\201604271524119_NotRequiredPasswordField.Designer.cs">
+      <DependentUpon>201604271524119_NotRequiredPasswordField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GroupsListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
@@ -208,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604271510581_UserGroup.resx">
       <DependentUpon>201604271510581_UserGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271524119_NotRequiredPasswordField.resx">
+      <DependentUpon>201604271524119_NotRequiredPasswordField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
