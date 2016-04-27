@@ -5,7 +5,7 @@
 @model ITS.Models.GroupsListViewModel
 
 @{
-    ViewBag.Title = "All Users";
+    ViewBag.Title = "All Groups";
 }
 
 <div class="panel panel-default">
@@ -21,19 +21,23 @@
             @foreach (var item in Model.Groups)
             {
                 <tr>
-                    <td class="text-center">@Html.ActionLink(item.Name, "Edit", new { item.ID })</td>
+                    <td class="text-center">@item.Name</td>
                     <td class="text-center">
-                        @using (Html.BeginForm("Delete", "Group"))
-                        {
-                            <input type="submit" class="btn-warning btn-xs" value="Delete" />
-                        }
+                        <a href="@Url.Action("Delete", "Group", new { id = item.ID})" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </a>
+                        <a href="@Url.Action("Edit", "Group", new { id = item.ID})" class="btn btn-info">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </a>
                     </td>
                 </tr>
             }
         </table>
     </div>
     <div class="panel-footer">
-        @Html.ActionLink("Add new group", "Create", null, new { @class = "btn btn-success" })
+        <a href="@Url.Action("Create", "Group")" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
     </div>
 </div>
 

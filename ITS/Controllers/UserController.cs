@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ITS.Domain.Entities;
 using ITS.Domain.UnitOfWork;
 using ITS.Models;
+using System.Web.Helpers;
 
 namespace ITS.Controllers
 {
@@ -54,9 +55,9 @@ namespace ITS.Controllers
         //
         // GET: /User/Create
 
-        public ActionResult Create()
+        public ViewResult Create()
         {
-            return View(new User());
+            return View("Edit",new User());
         }
 
         //
@@ -84,7 +85,8 @@ namespace ITS.Controllers
 
         public ActionResult Edit(int id)
         {
-            var user = unitOfWork.Users.GetByID(id);
+            User user = unitOfWork.Users.GetByID(id);
+
             return View(user);
         }
 
@@ -94,45 +96,96 @@ namespace ITS.Controllers
         [HttpPost]
         public ActionResult Edit(int id, User user)
         {
-            try
+            if(ModelState.IsValid)
             {
-                unitOfWork.Users.Update(user);
-                unitOfWork.Save();
-
+                SaveUser(user);
+                TempData["message"] = string.Format("User {0} {1} has been saved!", user.FirstName, user.LastName);
                 return RedirectToAction("List");
             }
-            catch
+            else
             {
-                ViewBag.Error = true;
                 return View(user);
             }
+            //try
+            //{
+            //    unitOfWork.Users.Update(user);
+            //    unitOfWork.Save();
+
+            //    return RedirectToAction("List");
+            //}
+            //catch
+            //{
+            //    ViewBag.Error = true;
+            //    return View(user);
+            //}
         }
 
         //
         // GET: /User/Delete/5
 
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id)
+        //{
+        //    var user = unitOfWork.Users.GetByID(id);
+        //    return View(user);
+        //}
+
+        public User DeleteUser(int id)
         {
-            var user = unitOfWork.Users.GetByID(id);
-            return View(user);
+            User dbEntry = unitOfWork.Users.GetByID(id);
+            if (dbEntry != null)
+            {
+                unitOfWork.Users.Delete(dbEntry);
+                unitOfWork.Save();
+            }
+
+            return dbEntry;
         }
 
         //
         // POST: /User/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, User user)
+        //[HttpPost] -??? Not working!
+        public ActionResult Delete(int id)
         {
-            try
+            User deletedUser = DeleteUser(id);
+            if(deletedUser != null)
             {
-                unitOfWork.Users.Delete(id);
-                return RedirectToAction("List");
+                TempData["message"] = string.Format("User {0} {1} was deleted!", deletedUser.FirstName, deletedUser.LastName);
             }
-            catch
+
+            return RedirectToAction("List");
+        }
+
+        public void SaveUser(User user)
+        {
+            if (user.Password != null)
             {
-                ViewBag.Error = true;
-                return View();
+                user.Password = Crypto.HashPassword(user.Password);
             }
+
+            if(user.ID == 0)
+            {
+                unitOfWork.Users.Insert(user);
+            }
+            else
+            {
+                User dbEntry = unitOfWork.Users.GetByID(user.ID);
+
+                if(dbEntry != null)
+                {
+                    dbEntry.LastName = user.LastName;
+                    dbEntry.FirstName = user.FirstName;
+                    dbEntry.Login = user.Login;
+
+                    if (user.Password != null)
+                    {
+                        dbEntry.Password = user.Password;
+                    }
+                    dbEntry.Role = user.Role;
+                }
+                //unitOfWork.Users.Update(user);
+            }
+            unitOfWork.Save();
         }
     }
 }
