@@ -1,0 +1,14 @@
+﻿@model ITS.Domain.Entities.Group
+
+@{
+    ViewBag.Title = "Edit Group";
+}
+
+<h1>Edit Group</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel and return to List", "List")
+}

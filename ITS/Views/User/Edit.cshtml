@@ -1,0 +1,54 @@
+﻿@model ITS.Domain.Entities.User
+
+@{
+    ViewBag.Title = "Edit User";
+}
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Edit User</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "User"))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ID)
+            <div class="form-group">
+                @Html.Label("Last Name")
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div class="form-group">
+                @Html.Label("First Name")
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control"})
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div class="form-group">
+                @Html.Label("Login")
+                @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Login)
+            </div>
+            <div class="form-group">
+                @Html.Label("Password")
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Role")
+                <select class="form-control" name="Role">
+                    <option value="0">Student</option>
+                    <option value="1">Teacher</option>
+                    <option value="2">Admin</option>
+                </select>
+                @Html.ValidationMessageFor(m => m.Role)
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("List", "User")" class="btn btn-default">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            </a>
+            <button type="submit" value="Save" class="btn btn-info">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+        </div>
+    }
+</div>
+
+

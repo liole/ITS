@@ -91,21 +91,21 @@ namespace ITS.Controllers
         //
         // POST: /Group/Edit/5
 
-        [HttpPost]
-        public ActionResult Edit(int id, Group group)
-        {
-            try
-            {
-                unitOfWork.Groups.Update(group);
-                unitOfWork.Save();
+        //[HttpPost]
+        //public ActionResult Edit(int id, Group group)
+        //{
+        //    try
+        //    {
+        //        unitOfWork.Groups.Update(group);
+        //        unitOfWork.Save();
 
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("List");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         //
         // GET: /Group/Delete/5

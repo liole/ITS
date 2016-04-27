@@ -21,16 +21,26 @@
                 <th class="text-center">Actions</th>
             </tr>
             @foreach (var item in Model.Users)
-            {
+            { 
                 <tr>
                     <td class="text-center">@item.LastName</td>
                     <td class="text-center">@item.FirstName</td>
                     <td class="text-center">@item.Login</td>
                     <td class="text-center">
-                        <a href="@Url.Action("Delete", "User")" class="btn btn-warning">
+                            @*@using (Html.BeginForm("Delete", "User"))
+                            {
+                                @Html.Hidden("userId", item.ID)
+                                <button type="submit" class="btn btn-warning btn-group-justified"><span class="glyphicon glyphicon-remove"></span> </button>
+                            }
+                            @using (Html.BeginForm("Edit", "User"))
+                            {
+                                @Html.Hidden("userId", item.ID)
+                                <button type="submit" class="btn btn-info btn-group-justified"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            }*@
+                        <a href="@Url.Action("Delete", "User", new { id = item.ID})" class="btn btn-warning">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </a>
-                        <a href="@Url.Action("Edit", "User")" class="btn btn-info">
+                        <a href="@Url.Action("Edit", "User", new { id = item.ID })" class="btn btn-info">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </a>
                     </td>

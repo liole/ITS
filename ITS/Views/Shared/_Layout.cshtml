@@ -6,11 +6,20 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
-    <script src="~/Scrits/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/main.js"></script>
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div class="col-md-6 col-md-offset-3 box">
+        @if(TempData["message"] != null)
+        {
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+                    @TempData["message"]
+            </div>
+        }
         @RenderBody()
     </div>
 </body>
