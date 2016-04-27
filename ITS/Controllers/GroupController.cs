@@ -53,9 +53,9 @@ namespace ITS.Controllers
         //
         // GET: /Group/Create
 
-        public ActionResult Create()
+        public ViewResult Create()
         {
-            return View(new Group());
+            return View("Edit", new Group());
         }
 
         //
@@ -91,48 +91,74 @@ namespace ITS.Controllers
         //
         // POST: /Group/Edit/5
 
-        //[HttpPost]
-        //public ActionResult Edit(int id, Group group)
-        //{
-        //    try
-        //    {
-        //        unitOfWork.Groups.Update(group);
-        //        unitOfWork.Save();
-
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpPost]
+        public ActionResult Edit(int id, Group group)
+        {
+            if (ModelState.IsValid)
+            {
+                SaveGroup(group);
+                TempData["message"] = string.Format("Group {0} has been saved!", group.Name);
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return View(group);
+            }
+        }
 
         //
         // GET: /Group/Delete/5
 
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id)
+        //{
+        //    var group = unitOfWork.Groups.GetByID(id);
+        //    return View(group);
+        //}
+
+        public Group DeleteGroup(int id)
         {
-            var group = unitOfWork.Groups.GetByID(id);
-            return View(group);
+            Group dbEntry = unitOfWork.Groups.GetByID(id);
+            if (dbEntry != null)
+            {
+                unitOfWork.Groups.Delete(dbEntry);
+                unitOfWork.Save();
+            }
+
+            return dbEntry;
         }
 
         //
         // POST: /Group/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        //[HttpPost]
+        public ActionResult Delete(int id)
         {
-            try
+            Group deletedGroup = DeleteGroup(id);
+            if (deletedGroup != null)
             {
-                unitOfWork.Groups.Delete(id);
+                TempData["message"] = string.Format("Group {0} was deleted!", deletedGroup.Name);
+            }
 
-                return RedirectToAction("List");
-            }
-            catch
+            return RedirectToAction("List");
+        }
+
+        public void SaveGroup(Group group)
+        {
+
+            if (group.ID == 0)
             {
-                ViewBag.Error = true;
-                return View();
+                unitOfWork.Groups.Insert(group);
             }
+            else
+            {
+                Group dbEntry = unitOfWork.Groups.GetByID(group.ID);
+
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = group.Name;
+                }
+            }
+            unitOfWork.Save();
         }
     }
 }

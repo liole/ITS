@@ -99,7 +99,7 @@ namespace ITS.Controllers
             if(ModelState.IsValid)
             {
                 SaveUser(user);
-                TempData["message"] = string.Format("{0} {1} has been saved!", user.FirstName, user.LastName);
+                TempData["message"] = string.Format("User {0} {1} has been saved!", user.FirstName, user.LastName);
                 return RedirectToAction("List");
             }
             else
@@ -150,7 +150,7 @@ namespace ITS.Controllers
             User deletedUser = DeleteUser(id);
             if(deletedUser != null)
             {
-                TempData["message"] = string.Format("{0} {1} was deleted!", deletedUser.FirstName, deletedUser.LastName);
+                TempData["message"] = string.Format("User {0} {1} was deleted!", deletedUser.FirstName, deletedUser.LastName);
             }
 
             return RedirectToAction("List");
