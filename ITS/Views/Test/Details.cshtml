@@ -1,0 +1,47 @@
+﻿@using ITS.Domain.Entities;
+@model Test
+
+@{
+    ViewBag.Title = "Деталі тесту";
+}
+
+<a href="@Url.Action("Edit", new { id = Model.ID })" class="float-btn">
+    <span class="glyphicon glyphicon-pencil"></span>
+</a>
+<h2 class="m-b-0">@Model.Name</h2>
+<h4 class="m-a-0">    
+    @Model.Subject.Name.
+    <em>Кількість балів:</em> <strong>@Model.Mark</strong>
+</h4>
+
+@foreach (var question in Model.Questions)
+{
+    <div class="paperBox">
+        <a href="@Url.Action("Delete", "Question", new { id = question.ID })" class="float-btn-small">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a href="@Url.Action("Edit", "Question", new { id = question.ID })" class="float-btn-small">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+        @if (question is ABCDQuestion)
+        {
+            @Html.Partial(@"~/Views/Question/DetailsABCD.cshtml", question);
+        }
+        @if (question is TextQuestion)
+        {
+            @Html.Partial(@"~/Views/Question/DetailsText.cshtml", question);
+        }
+    </div>
+}
+<h4>Додати запитання</h4>
+<div class="btn-group m-l-30">
+    <a class="btn btn-default disabled"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="@Url.Action("CreateABCD", "Question", new { id = Model.ID })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-th-list"></span>
+        з варіантами відповіді
+    </a>
+    <a href="@Url.Action("CreateText", "Question", new { id = Model.ID })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-font"></span>
+        текстова відповідь
+    </a>
+</div>

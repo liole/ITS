@@ -1,0 +1,35 @@
+﻿using ITS.Domain.Entities;
+using ITS.Domain.UnitOfWork.Abstract;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace ITS.Controllers
+{
+    public class QuestionController : Controller
+    {
+        private IUnitOfWork unitOfWork;
+
+		public QuestionController(IUnitOfWork uow)
+		{
+			this.unitOfWork = uow;
+		}
+
+		public ActionResult Edit(int id)
+		{
+			var question = unitOfWork.Questions.GetByID(id);
+			if (question is ABCDQuestion)
+			{
+				return View("ABCDEditor", question);
+			}
+			if (question is TextQuestion)
+			{
+				return View("TextEditor", question);
+			}
+			throw new InvalidOperationException();
+		}
+
+    }
+}

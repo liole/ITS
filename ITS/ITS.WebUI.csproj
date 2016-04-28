@@ -128,6 +128,8 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +200,13 @@
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Group\Edit.cshtml" />
+    <Content Include="Views\Test\List.cshtml" />
+    <Content Include="Views\Test\Details.cshtml" />
+    <Content Include="Views\Question\DetailsABCD.cshtml" />
+    <Content Include="Views\Question\DetailsText.cshtml" />
+    <Content Include="Views\Test\Edit.cshtml" />
+    <Content Include="Views\Question\ABCDEditor.cshtml" />
+    <Content Include="Views\Question\TextEditor.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

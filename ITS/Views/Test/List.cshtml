@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ITS.Domain.Entities.Test>
+
+@{
+    ViewBag.Title = "Список всіх тестів";
+}
+<a href="@Url.Action("Create")" class="float-btn">
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<h2>@ViewBag.Title</h2>
+
+@foreach (var test in Model)
+{
+    <div class="paperBox testBox" onclick="location = '@Url.Action("Details", new { test.ID })'">
+        <a href="@Url.Action("Delete", new { id = test.ID })" class=" float-btn-small">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a href="@Url.Action("Edit", new { id = test.ID })" class="float-btn-small">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+        @test.Name
+        <div class="testSubject">
+            @test.Subject.Name. 
+            <em>Запитань:</em> @test.Questions.Count
+        </div>
+    </div>
+}

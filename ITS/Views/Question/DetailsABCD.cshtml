@@ -1,0 +1,21 @@
+﻿@using ITS.Domain.Entities
+@model ITS.Domain.Entities.ABCDQuestion
+
+<div class="questionText">
+    @Model.QuestionText
+    <div class="pull-right pointsDetails">
+        (<em>бали</em> <strong>&times; @Model.Coefficient.ToString("0.##")</strong>)
+    </div>
+</div>
+<div class="abcd_var@(Model.Answer == ABCDAnswer.A ? " correct" : "")">
+    <div class="abcd_letter">А:</div>@Model.AnswerA
+</div>
+<div class="abcd_var@(Model.Answer == ABCDAnswer.B ? " correct" : "")">
+    <div class="abcd_letter">Б:</div>@Model.AnswerB
+</div>
+<div class="abcd_var@(Model.Answer == ABCDAnswer.C ? " correct" : "")">
+    <div class="abcd_letter">В:</div>@Model.AnswerC
+</div>
+<div class="abcd_var@(Model.Answer == ABCDAnswer.D ? " correct" : "")">
+    <div class="abcd_letter">Г:</div>@Model.AnswerD
+</div>

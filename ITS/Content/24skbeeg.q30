@@ -1,0 +1,43 @@
+﻿body {
+    background: url('/Images/background1.jpg');
+}
+.title {
+    font-weight: bold;
+    font-size: 5em;
+    margin-bottom: 0px;
+}
+.mainTitle {
+    display: inline-block;
+    color: #ffffff;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000f67;
+    text-shadow: 0px 0px 50px #000, 0px 0px 50px #005;
+}
+.subTitle {
+    display: inline-block;
+    color: #fff;
+    font-size: 0.5em;
+    line-height: 0.8em;
+    text-align: left;
+    text-shadow: 0px 0px 20px #000, 0px 0px 20px #005;
+}
+.box {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 3px 3px 5px #808080;
+    padding: 10px;
+    margin-top: 25px;
+}
+.field-validation-error{ color: red; font-weight: bold; }
+.input-validation-error{ border: 1px inset red; }
+
+.testBox {
+    background: #eef;
+    box-shadow: 3px 3px 3px #bdbdbd;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.5em;
+}
+.testSubject {
+    font-size: 0.75em;
+    color: #555;
+}
