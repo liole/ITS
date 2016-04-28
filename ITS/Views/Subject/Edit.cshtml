@@ -1,0 +1,30 @@
+﻿@model ITS.Domain.Entities.Subject
+
+@{
+    ViewBag.Title = "Edit Subject";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Edit Subject</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "Subject"))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ID)
+            <div class="form-group">
+                @Html.Label("Subject Name")
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("List", "Subject")" class="btn btn-default">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            </a>
+            <button type="submit" value="Save" class="btn btn-info">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+        </div>
+    }
+</div>
