@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -154,6 +155,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GroupsListViewModel.cs" />
+    <Compile Include="Models\LinkViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\UsersListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,6 +209,7 @@
     <Content Include="Views\Test\Edit.cshtml" />
     <Content Include="Views\Question\ABCDEditor.cshtml" />
     <Content Include="Views\Question\TextEditor.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

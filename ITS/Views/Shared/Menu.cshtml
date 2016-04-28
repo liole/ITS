@@ -1,0 +1,11 @@
+﻿@model IEnumerable<ITS.Models.LinkViewModel>
+
+<h3 class="menuTitle">Меню</h3>
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>@Html.ActionLink(item.Text, item.Action, item.Controller, null, new { 
+           @class = item.Selected ? "selected" : ""
+        })</li>
+    }
+</ul>
