@@ -207,6 +207,7 @@
     <Content Include="Views\Test\Edit.cshtml" />
     <Content Include="Views\Question\ABCDEditor.cshtml" />
     <Content Include="Views\Question\TextEditor.cshtml" />
+    <Content Include="Views\Group\Users.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
