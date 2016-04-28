@@ -86,6 +86,14 @@ namespace ITS.Controllers
         public ActionResult Edit(int id)
         {
             User user = unitOfWork.Users.GetByID(id);
+            var groups = unitOfWork.Groups.GetAll().Select(g => new SelectListItem()
+            {
+                Text = g.Name,
+                Value = g.ID.ToString()
+
+            });
+
+            ViewBag.Groups = groups;
 
             return View(user);
         }
@@ -186,6 +194,28 @@ namespace ITS.Controllers
                 //unitOfWork.Users.Update(user);
             }
             unitOfWork.Save();
+        }
+
+        public ActionResult AddGroup(int groupId, int userId)
+        {
+            var user1 = unitOfWork.Users.GetByID(userId);
+            var group1 = unitOfWork.Groups.GetByID(groupId);
+
+            group1.Users.Add(user1);
+            unitOfWork.Save();
+
+            return RedirectToAction("Edit", new { id =userId});
+        }
+
+        public ActionResult RemoveGroup(int groupId, int userId)
+        {
+            var user1 = unitOfWork.Users.GetByID(userId);
+            var group1 = unitOfWork.Groups.GetByID(groupId);
+
+            user1.Groups.Remove(group1);
+            unitOfWork.Save();
+
+            return RedirectToAction("Edit", new { id = userId });
         }
     }
 }

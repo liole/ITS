@@ -160,5 +160,29 @@ namespace ITS.Controllers
             }
             unitOfWork.Save();
         }
+
+        public ActionResult Users(int id)
+        {
+            var group1 = unitOfWork.Groups.GetByID(id);
+
+            return View(group1);
+        }
+
+        public ActionResult RemoveUser(int groupId, int userId)
+        {
+            var user1 = unitOfWork.Users.GetByID(userId);
+            var group1 = unitOfWork.Groups.GetByID(groupId);
+
+            group1.Users.Remove(user1);
+            unitOfWork.Save();
+
+            if(group1.Users.Count() == 0)
+            {
+                return RedirectToAction("List");
+            }
+
+            return RedirectToAction("Users", new { id = groupId });
+
+        }
     }
 }
