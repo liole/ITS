@@ -57,6 +57,34 @@ namespace ITS.Controllers
 
         public ViewResult Create()
         {
+            var groups = unitOfWork.Groups.GetAll().Select(g => new SelectListItem()
+            {
+                Text = g.Name,
+                Value = g.ID.ToString()
+
+            });
+            var roles = new List<SelectListItem>();
+            roles.Add(new SelectListItem()
+                {
+                    Text = "Student",
+                    Value = "0"
+                });
+            if(CurrentUser().Role == UserRole.Admin)
+            {
+                roles.Add(new SelectListItem()
+                {
+                    Text = "Teacher",
+                    Value = "1"
+                });
+                roles.Add(new SelectListItem()
+                {
+                    Text = "Admin",
+                    Value = "2"
+                });
+            }
+            ViewBag.Roles = roles;
+            ViewBag.Create = true;
+            ViewBag.Groups = groups;
             return View("Edit",new User());
         }
 
@@ -92,7 +120,30 @@ namespace ITS.Controllers
                 Value = g.ID.ToString()
 
             });
-
+            var roles = new List<SelectListItem>();
+            roles.Add(new SelectListItem()
+            {
+                Text = "Student",
+                Value = "0",
+                Selected = user.Role == UserRole.Student
+            });
+            if (CurrentUser().Role == UserRole.Admin)
+            {
+                roles.Add(new SelectListItem()
+                {
+                    Text = "Teacher",
+                    Value = "1",
+                    Selected = user.Role == UserRole.Teacher
+                });
+                roles.Add(new SelectListItem()
+                {
+                    Text = "Admin",
+                    Value = "2",
+                    Selected = user.Role == UserRole.Admin
+                });
+            }
+            ViewBag.Roles = roles;
+            ViewBag.Create = false;
             ViewBag.Groups = groups;
 
             return View(user);
@@ -112,6 +163,37 @@ namespace ITS.Controllers
             }
             else
             {
+                var groups = unitOfWork.Groups.GetAll().Select(g => new SelectListItem()
+                {
+                    Text = g.Name,
+                    Value = g.ID.ToString()
+
+                });
+                var roles = new List<SelectListItem>();
+                roles.Add(new SelectListItem()
+                {
+                    Text = "Student",
+                    Value = "0",
+                    Selected = user.Role == UserRole.Student
+                });
+                if (CurrentUser().Role == UserRole.Admin)
+                {
+                    roles.Add(new SelectListItem()
+                    {
+                        Text = "Teacher",
+                        Value = "1",
+                        Selected = user.Role == UserRole.Teacher
+                    });
+                    roles.Add(new SelectListItem()
+                    {
+                        Text = "Admin",
+                        Value = "2",
+                        Selected = user.Role == UserRole.Admin
+                    });
+                }
+                ViewBag.Roles = roles;
+                ViewBag.Groups = groups;
+                ViewBag.Create = user.ID == 0;
                 return View(user);
             }
             //try
@@ -216,6 +298,11 @@ namespace ITS.Controllers
             unitOfWork.Save();
 
             return RedirectToAction("Edit", new { id = userId });
+        }
+
+        private User CurrentUser()
+        {
+            return unitOfWork.Users.GetByID(1);
         }
     }
 }
