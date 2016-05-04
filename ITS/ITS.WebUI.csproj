@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\ListShuffle.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201604051142592_Init.cs" />
@@ -156,9 +157,13 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GroupsListViewModel.cs" />
+    <Compile Include="Models\GroupTestViewModel.cs" />
     <Compile Include="Models\LinkViewModel.cs" />
+    <Compile Include="Models\MyTestsViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\SubjectsListViewModel.cs" />
+    <Compile Include="Models\TestAnswersModel.cs" />
+    <Compile Include="Models\TestResultViewModel.cs" />
     <Compile Include="Models\UsersListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -215,6 +220,13 @@
     <Content Include="Views\Group\Users.cshtml" />
     <Content Include="Views\Subject\List.cshtml" />
     <Content Include="Views\Subject\Edit.cshtml" />
+    <Content Include="Views\Test\Take.cshtml" />
+    <Content Include="Views\Question\TakeABCD.cshtml" />
+    <Content Include="Views\Question\TakeText.cshtml" />
+    <Content Include="Views\Test\Result.cshtml" />
+    <Content Include="Views\Test\Assign.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Test\Results.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,0 +1,29 @@
+﻿@model ITS.Domain.Entities.Test
+
+@{
+    ViewBag.Title = "Результати тестуваня";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<h2 class="m-b-0">@Model.Name</h2>
+<h4 class="m-a-0">
+    @Model.Subject.Name.
+    <em>Учнів пройшло тест:</em> <strong>@Model.Results.Count</strong>
+</h4>
+<br />
+<table class="table table-striped table-condensed table-bordered">
+    <tr>
+        <th class="text-center">Прізвище ім'я учня</th>
+        <th class="text-center">Оцінка</th>
+        <th class="text-center">Відповідей</th>
+    </tr>
+    @foreach (var item in Model.Results)
+    {
+        <tr>
+            <td class="text-center">@item.User.LastName @item.User.FirstName</td>
+            <td class="text-center markCell">@item.Mark</td>
+            <td class="text-center">@item.QuestionAmountCorrect</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,32 @@
+﻿@model ITS.Models.MyTestsViewModel
+
+@{
+    ViewBag.Title = "Мої тести";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Поточні тести</h3>
+@foreach (var test in Model.Present)
+{
+    <div class="paperBox testBox" onclick="location = '@Url.Action("Take", new { test.ID })'">
+        @test.Name
+        <div class="testSubject">
+            @test.Subject.Name.
+            <em>Вчитель:</em> @test.User.FirstName @test.User.LastName
+        </div>
+    </div>
+}
+
+<h3>Попередні тести</h3>
+@foreach (var test in Model.Past)
+{
+    <div class="paperBox">
+        <span class="pastMark">@test.Mark</span>
+        @test.Test.Name
+        <div class="testSubject">
+            @test.Test.Subject.Name.
+            <em>Вчитель:</em> @test.Test.User.FirstName @test.Test.User.LastName
+        </div>
+    </div>
+}

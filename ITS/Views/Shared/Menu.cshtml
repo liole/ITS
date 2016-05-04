@@ -4,8 +4,15 @@
 <ul>
     @foreach(var item in Model)
     {
-        <li>@Html.ActionLink(item.Text, item.Action, item.Controller, null, new { 
-           @class = item.Selected ? "selected" : ""
-        })</li>
+        if (item != null)
+        {
+            <li>@Html.ActionLink(item.Text, item.Action, item.Controller, null, new { 
+               @class = item.Selected ? "selected" : ""
+            })</li>
+        }
+        else
+        {
+            <li class="menuSeparator"></li>
+        }
     }
 </ul>
