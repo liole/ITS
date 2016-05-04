@@ -271,7 +271,10 @@ namespace ITS.Controllers
                     {
                         dbEntry.Password = user.Password;
                     }
-                    dbEntry.Role = user.Role;
+                    if (user.ID != CurrentUser().ID)
+                    {
+                        dbEntry.Role = user.Role;
+                    }
                 }
                 //unitOfWork.Users.Update(user);
             }
