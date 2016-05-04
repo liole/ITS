@@ -195,7 +195,12 @@ namespace ITS.Controllers
 
 		private User CurrentUser()
 		{
-			return unitOfWork.Users.GetByID(1);
+			var id = Session["user"];
+			if (id == null)
+			{
+				return null;
+			}
+			return unitOfWork.Users.GetByID((int)id);
 		}
 
     }

@@ -21,6 +21,10 @@ namespace ITS.Controllers
 		public PartialViewResult Menu()
 		{
 			var user = CurrentUser();
+			if (user == null)
+			{
+				return PartialView(null);
+			}
 			var menuList = new List<LinkViewModel>();
 			string controller = ControllerContext.ParentActionViewContext.RouteData.Values["controller"].ToString();
 			string action = ControllerContext.ParentActionViewContext.RouteData.Values["action"].ToString();
@@ -35,12 +39,18 @@ namespace ITS.Controllers
 				menuList.Add(null);
 			}
 			menuList.Add(new LinkViewModel("Профіль", "Profile", "Account", controller == "Account"));
+			menuList.Add(new LinkViewModel("Вихід", "Logout", "Account", false));
 			return PartialView(menuList);
 		}
 
 		private User CurrentUser()
 		{
-			return unitOfWork.Users.GetByID(1);
+			var id = Session["user"];
+			if (id == null)
+			{
+				return null;
+			}
+			return unitOfWork.Users.GetByID((int)id);
 		}
 
     }
