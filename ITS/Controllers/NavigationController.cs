@@ -36,6 +36,7 @@ namespace ITS.Controllers
 				menuList.Add(new LinkViewModel("Тести", "List", "Test", controller == "Test" && action != "Assigned"));
 				menuList.Add(new LinkViewModel("Користувачі", "List", "User", controller == "User"));
 				menuList.Add(new LinkViewModel("Групи", "List", "Group", controller == "Group"));
+				menuList.Add(new LinkViewModel("Предмети", "List", "Subject", controller == "Subject"));
 				menuList.Add(null);
 			}
 			menuList.Add(new LinkViewModel("Профіль", "Profile", "Account", controller == "Account"));
