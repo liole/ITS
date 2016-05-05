@@ -1,0 +1,23 @@
+﻿@using ITS.Domain.Entities
+@model ITS.Domain.Entities.ABCDQuestion
+
+<div class="questionText">
+    <strong>@ViewData["order"].</strong> @Model.QuestionText
+    <div class="pull-right pointsDetails">
+        (<em>бали</em> <strong>&times; @Model.Coefficient.ToString("0.##")</strong>)
+    </div>
+</div>
+<div class="abcd_var A">
+    <div class="abcd_letter input_letter" onclick="markAnswer(@ViewData["order"], 'A')">А:</div>@Model.AnswerA
+</div>
+<div class="abcd_var B">
+    <div class="abcd_letter input_letter" onclick="markAnswer(@ViewData["order"], 'B')">Б:</div>@Model.AnswerB
+</div>
+<div class="abcd_var C">
+    <div class="abcd_letter input_letter" onclick="markAnswer(@ViewData["order"], 'C')">В:</div>@Model.AnswerC
+</div>
+<div class="abcd_var D">
+    <div class="abcd_letter input_letter" onclick="markAnswer(@ViewData["order"], 'D')">Г:</div>@Model.AnswerD
+</div>
+<input name="Questions[@((int)ViewData["order"]-1)].ID" type="hidden" value="@Model.ID" />
+<input name="Questions[@((int)ViewData["order"]-1)].Answer" type="hidden" value="0" class="answer" />

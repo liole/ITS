@@ -1,4 +1,5 @@
-﻿using ITS.Domain.UnitOfWork.Abstract;
+﻿using ITS.Domain.Entities;
+using ITS.Domain.UnitOfWork.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,103 +63,62 @@ namespace ITS.Controllers
             return RedirectToAction("Profile", "Account");
         }
 
-        //
-        // GET: /Account/
+		public ActionResult Login()
+		{
+			return View();
+		}
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+		[HttpPost]
+		public ActionResult Login(string login, string password)
+		{
+			var user = unitOfWork.Users.GetAll().FirstOrDefault(u => u.Login == login);
+			if (user == null)
+			{
+				TempData["message"] = string.Format("Не правильне ім'я користувача");
+				return View();
+			}
+			if (!Crypto.VerifyHashedPassword(user.Password, password))
+			{
+				TempData["message"] = string.Format("Не правильний пароль");
+				return View();
+			}
+			Session.Add("user", user.ID);
+			return Redirect();
+		}
 
-        //
-        // GET: /Account/Details/5
+		public ActionResult Logout()
+		{
+			Session.Remove("user");
+			return Redirect();
+		}
 
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+		public ActionResult Redirect()
+		{
+			var user = CurrentUser();
+			if (user == null)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			switch (user.Role)
+			{
+				case UserRole.Student:
+					return RedirectToAction("Assigned", "Test");
+				case UserRole.Teacher:
+					return RedirectToAction("List", "Test");
+				case UserRole.Admin:
+					return RedirectToAction("List", "User");
+			}
+			return RedirectToAction("Login", "Account");
+		}
 
-        //
-        // GET: /Account/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Account/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Account/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        private User CurrentUser()
-        {
-            return unitOfWork.Users.GetByID(1);
-        }
+		private User CurrentUser()
+		{
+			var id = Session["user"];
+			if (id == null)
+			{
+				return null;
+			}
+			return unitOfWork.Users.GetByID((int)id);
+		}
     }
 }

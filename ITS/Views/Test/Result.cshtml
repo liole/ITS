@@ -1,0 +1,15 @@
+﻿@using ITS.Models;
+@model TestResultViewModel
+
+@{
+    ViewBag.Title = "Результат тесту";
+}
+
+<h2 class="m-b-0">@Model.Test.Name</h2>
+<h4 class="m-a-0">
+    @Model.Test.Subject.Name.
+    <em>Виконано правильно:</em> <strong>@Model.Count</strong>/@Model.Test.Questions.Count
+</h4>
+<br />
+<h3 class="resultLabel text-center">Ваша оцінка:</h3>
+<h2 class="markResult text-center">@Model.Result</h2>

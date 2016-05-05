@@ -1,0 +1,40 @@
+﻿@using ITS.Domain.Entities;
+@using ITS.HtmlHelpers;
+@model Test
+
+@{
+    ViewBag.Title = "Пройти тест";
+}
+
+<h2 class="m-b-0">@Model.Name</h2>
+<h4 class="m-a-0">
+    @Model.Subject.Name.
+    <em>Кількість балів:</em> <strong>@Model.Mark</strong>
+</h4>
+
+@using(Html.BeginForm("Check", "Test", new { save = ViewBag.Save }, FormMethod.Post))
+{
+    @Html.Hidden("TestID", Model.ID);
+    var i = 1;
+    foreach (var question in Model.Questions.Shuffle(Model.Randomize))
+    {
+        <div class="paperBox" id="question_@i">
+            @if (question is ABCDQuestion)
+            {
+                @Html.Partial("~/Views/Question/TakeABCD.cshtml", question, new ViewDataDictionary() { { "order", i } });
+            }
+            @if (question is TextQuestion)
+            {
+                @Html.Partial("~/Views/Question/TakeText.cshtml", question, new ViewDataDictionary() { { "order", i } });
+            }
+        </div>
+        { i++; }
+    }
+
+    <br />
+    <button type="submit" class="btn btn-lg btn-success center-block">
+        <span class="glyphicon glyphicon-check"></span>
+        &nbsp;Перевірити
+    </button>
+    <br />
+}

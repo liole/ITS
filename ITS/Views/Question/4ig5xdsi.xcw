@@ -1,0 +1,18 @@
+﻿@model ITS.Domain.Entities.TextQuestion
+
+<div class="questionText">
+    <strong>@ViewData["order"].</strong> @Model.QuestionText
+    <div class="pull-right pointsDetails">
+        (<em>бали</em> <strong>&times; @Model.Coefficient.ToString("0.##")</strong>)
+    </div>
+</div>
+<div class="answerDetails">
+    <input name="question[].id" type="hidden" value="@Model.ID" />
+    <div class="form-group">
+        <label for="question[].answer" class="control-label col-sm-2">Відповідь</label>
+        <div class="col-sm-10">
+            <input name="question[].answer" type="text" value="0" class="form-control answer" />
+        </div>
+</div>
+    Відповідь: <input name="question[].answer" type="text" value="0" class="form-control col-md-6 answer" />
+</div>

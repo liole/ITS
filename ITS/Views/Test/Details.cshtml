@@ -13,6 +13,21 @@
     @Model.Subject.Name.
     <em>Кількість балів:</em> <strong>@Model.Mark</strong>
 </h4>
+<br/>
+<div class="m-l-30">
+    <a href="@Url.Action("Take", "Test", new { id = Model.ID, save = false })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-check"></span>
+        &nbsp;Пройти
+    </a>
+    <a href="@Url.Action("Assign", "Test", new { id = Model.ID })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-user"></span>
+        &nbsp;Призначити
+    </a>
+    <a href="@Url.Action("Results", "Test", new { id = Model.ID })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-signal"></span>
+        &nbsp;Результати
+    </a>
+</div>
 
 @foreach (var question in Model.Questions)
 {

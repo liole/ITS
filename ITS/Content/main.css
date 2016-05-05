@@ -101,6 +101,14 @@
     margin-right: 5px;
     width: 35px;
 }
+.abcd_letter.marked {
+    border: solid 3px #6a0072;
+    padding-left: 5px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 5px;
+    width: 35px;
+}
 .m-l-30 {
     margin-left: 30px;
 }
@@ -137,8 +145,37 @@ nav a:hover {
     background: #77f;
     color: #fff;
 }
+nav .menuSeparator {
+    border-top: solid 1px rgba(119, 119, 255, 0.5);
+    padding-top: 5px;
+}
 .numberIcon {
     font-size: 1.2em; 
     line-height:1em;
+    font-weight: bold;
+}
+.input_letter {
+    cursor: pointer;
+}
+.paperBox.completed {
+    background-color: #bbffbb;
+}
+.markResult {
+    margin: 0px;
+    margin-bottom: 20px;
+    font-size: 4em;
+    font-style: italic;
+    color: #ff0000;
+}
+.pastMark {
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 1.5em;
+    color: #ff0000;
+}
+.markCell {
+    color: #ff0000;
+    font-size: 1.2em;
     font-weight: bold;
 }
