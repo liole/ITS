@@ -1,19 +1,19 @@
 ﻿@model ITS.Domain.Entities.Group
 
 @{
-    ViewBag.Title = "Edit Group";
+    ViewBag.Title = "Редагувати групу";
 }
 
 <div class="panel">
     <div class="panel-heading">
-        <h3>Edit Group</h3>
+        <h3>Редагувати групу</h3>
     </div>
     @using (Html.BeginForm("Edit", "Group"))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.ID)
             <div class="form-group">
-                @Html.Label("Group Name")
+                @Html.Label("Назва Групи")
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Name)
             </div>

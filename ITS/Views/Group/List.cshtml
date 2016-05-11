@@ -5,23 +5,25 @@
 @model ITS.Models.GroupsListViewModel
 
 @{
-    ViewBag.Title = "All Groups";
+    ViewBag.Title = "Усі групи";
 }
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>All Groups</h3>
+        <h3>Усі групи</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-condensed table-bordered">
             <tr>
-                <th class="text-center">Group Name</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center">Назва Групи</th>
+                <th class="text-center">Учасники</th>
+                <th class="text-center">Дії</th>
             </tr>
             @foreach (var item in Model.Groups)
             {
                 <tr>
                     <td class="text-center">@item.Name</td>
+                    <td class="text-center">@item.Users.Count()</td>
                     <td class="text-center">
                         <a href="@Url.Action("Delete", "Group", new { id = item.ID})" class="btn btn-warning">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

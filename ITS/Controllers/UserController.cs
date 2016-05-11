@@ -305,11 +305,11 @@ namespace ITS.Controllers
 
         private User CurrentUser()
         {
-			var id = Session["user"];
-			if (id == null)
-			{
-				return null;
-			}
+            var id = Session["user"];
+            if (id == null)
+            {
+                return null;
+            }
 			return unitOfWork.Users.GetByID((int)id);
         }
     }

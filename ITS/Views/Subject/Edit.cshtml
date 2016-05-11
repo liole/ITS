@@ -1,19 +1,19 @@
 ﻿@model ITS.Domain.Entities.Subject
 
 @{
-    ViewBag.Title = "Edit Subject";
+    ViewBag.Title = "Редагувати предмет";
 }
 
 <div class="panel">
     <div class="panel-heading">
-        <h3>Edit Subject</h3>
+        <h3>Редагувати предмет</h3>
     </div>
     @using (Html.BeginForm("Edit", "Subject"))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.ID)
             <div class="form-group">
-                @Html.Label("Subject Name")
+                @Html.Label("Назва Предмету")
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Name)
             </div>

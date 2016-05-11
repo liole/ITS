@@ -1,7 +1,7 @@
 ﻿@model ITS.Domain.Entities.User
 
 @{
-    ViewBag.Title = (ViewBag.Create ? "Create" : "Edit") + " user";
+    ViewBag.Title = (ViewBag.Create ? "Створити" : "Редагувати") + " користувача";
 }
 <div class="panel">
     <div class="panel-heading">
@@ -12,26 +12,26 @@
         <div class="panel-body">
             @Html.HiddenFor(m => m.ID)
             <div class="form-group">
-                @Html.Label("Last Name")
+                @Html.Label("Прізвище")
                 @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.LastName)
             </div>
             <div class="form-group">
-                @Html.Label("First Name")
+                @Html.Label("Ім'я")
                 @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control"})
                 @Html.ValidationMessageFor(m => m.FirstName)
             </div>
             <div class="form-group">
-                @Html.Label("Login")
+                @Html.Label("Логін")
                 @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Login)
             </div>
             <div class="form-group">
-                @Html.Label("Password")
+                @Html.Label("Пароль")
                 @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
             </div>
             <div class="form-group">
-                @Html.Label("Role")
+                @Html.Label("Роль")
                 @Html.DropDownList("Role", (IEnumerable<SelectListItem>)ViewBag.Roles, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Role)
             </div>
@@ -62,8 +62,8 @@
     {
         <table class="table table-striped table-condensed table-bordered">
             <tr>
-                <th class="text-center">Group Name</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center">Назва Групи</th>
+                <th class="text-center">Дії</th>
             </tr>
             @foreach (var item in Model.Groups)
             {
