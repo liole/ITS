@@ -99,14 +99,17 @@ namespace ITS.Controllers
 			{
 				return RedirectToAction("Login", "Account");
 			}
-			switch (user.Role)
+			if (user.IsStudent)
 			{
-				case UserRole.Student:
-					return RedirectToAction("Assigned", "Test");
-				case UserRole.Teacher:
-					return RedirectToAction("List", "Test");
-				case UserRole.Admin:
-					return RedirectToAction("List", "User");
+				return RedirectToAction("Assigned", "Test");
+			}
+			if (user.IsTeacher)
+			{
+				return RedirectToAction("List", "Test");
+			}
+			if (user.IsAdmin)
+			{
+				return RedirectToAction("List", "User");
 			}
 			return RedirectToAction("Login", "Account");
 		}

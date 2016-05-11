@@ -8,9 +8,11 @@ using ITS.Domain.Entities;
 using ITS.Domain.UnitOfWork;
 using ITS.Models;
 using System.Web.Helpers;
+using ITS.Infrastructure;
 
 namespace ITS.Controllers
 {
+	[Auth(UserRole.Admin)]
     public class UserController : Controller
     {
         private IUnitOfWork unitOfWork;
@@ -24,7 +26,7 @@ namespace ITS.Controllers
 
         //
         // GET: /User/
-
+		
         public ViewResult List(int page = 1)
         {
             UsersListViewModel model = new UsersListViewModel
@@ -63,6 +65,7 @@ namespace ITS.Controllers
                 Value = g.ID.ToString()
 
             });
+			/*
             var roles = new List<SelectListItem>();
             roles.Add(new SelectListItem()
                 {
@@ -83,9 +86,11 @@ namespace ITS.Controllers
                 });
             }
             ViewBag.Roles = roles;
+			 * */
+			ViewBag.AllowChooseRole = CurrentUser().IsAdmin;
             ViewBag.Create = true;
             ViewBag.Groups = groups;
-            return View("Edit",new User());
+			return View("Edit", new User() { IsStudent = true });
         }
 
         //
@@ -120,6 +125,7 @@ namespace ITS.Controllers
                 Value = g.ID.ToString()
 
             });
+			/*
             var roles = new List<SelectListItem>();
             roles.Add(new SelectListItem()
             {
@@ -143,6 +149,8 @@ namespace ITS.Controllers
                 });
             }
             ViewBag.Roles = roles;
+			 * */
+			ViewBag.AllowChooseRole = CurrentUser().IsAdmin;
             ViewBag.Create = false;
             ViewBag.Groups = groups;
 
@@ -169,6 +177,7 @@ namespace ITS.Controllers
                     Value = g.ID.ToString()
 
                 });
+				/*
                 var roles = new List<SelectListItem>();
                 roles.Add(new SelectListItem()
                 {
@@ -192,6 +201,8 @@ namespace ITS.Controllers
                     });
                 }
                 ViewBag.Roles = roles;
+				 * */
+				ViewBag.AllowChooseRole = CurrentUser().IsAdmin;
                 ViewBag.Groups = groups;
                 ViewBag.Create = user.ID == 0;
                 return View(user);
@@ -273,7 +284,9 @@ namespace ITS.Controllers
                     }
                     if (user.ID != CurrentUser().ID)
                     {
-                        dbEntry.Role = user.Role;
+						dbEntry.IsAdmin = user.IsAdmin;
+						dbEntry.IsTeacher = user.IsTeacher;
+						dbEntry.IsStudent = user.IsStudent;
                     }
                 }
                 //unitOfWork.Users.Update(user);

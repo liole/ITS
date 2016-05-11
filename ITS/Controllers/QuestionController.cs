@@ -1,5 +1,6 @@
 ﻿using ITS.Domain.Entities;
 using ITS.Domain.UnitOfWork.Abstract;
+using ITS.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ITS.Controllers
 {
+	[Auth(UserRole.Teacher)]
     public class QuestionController : Controller
     {
         private IUnitOfWork unitOfWork;

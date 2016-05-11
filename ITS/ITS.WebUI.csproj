@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\ListShuffle.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\AuthAttribute.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201604051142592_Init.cs" />
     <Compile Include="Migrations\201604051142592_Init.Designer.cs">
@@ -155,6 +156,10 @@
     <Compile Include="Migrations\201604271524119_NotRequiredPasswordField.cs" />
     <Compile Include="Migrations\201604271524119_NotRequiredPasswordField.Designer.cs">
       <DependentUpon>201604271524119_NotRequiredPasswordField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605112120279_UserRoleToMultiple.cs" />
+    <Compile Include="Migrations\201605112120279_UserRoleToMultiple.Designer.cs">
+      <DependentUpon>201605112120279_UserRoleToMultiple.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GroupsListViewModel.cs" />
@@ -248,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604271524119_NotRequiredPasswordField.resx">
       <DependentUpon>201604271524119_NotRequiredPasswordField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605112120279_UserRoleToMultiple.resx">
+      <DependentUpon>201605112120279_UserRoleToMultiple.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

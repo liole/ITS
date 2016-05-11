@@ -8,9 +8,11 @@ using ITS.Domain.Entities;
 using ITS.Domain.UnitOfWork;
 using ITS.Models;
 using System.Web.Helpers;
+using ITS.Infrastructure;
 
 namespace ITS.Controllers
 {
+	[Auth(UserRole.Admin)]
     public class SubjectController : Controller
     {
         private IUnitOfWork unitOfWork;

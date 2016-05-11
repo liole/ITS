@@ -7,9 +7,11 @@ using System.Web.Mvc;
 using ITS.Domain.Entities;
 using ITS.Domain.UnitOfWork;
 using ITS.Models;
+using ITS.Infrastructure;
 
 namespace ITS.Controllers
 {
+	[Auth(UserRole.Admin)]
     public class GroupController : Controller
     {
         //

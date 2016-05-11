@@ -18,8 +18,11 @@ namespace ITS.Domain.Entities
         [Required(ErrorMessage = "Please enter user's Login")]
         public string Login { get; set; }
 		public string Password { get; set; }
-        [Required(ErrorMessage = "Please select user's Role")]
-		public UserRole Role { get; set; }
+        //[Required(ErrorMessage = "Please select user's Role")]
+		//public UserRole Role { get; set; }
+		public bool IsStudent { get; set; }
+		public bool IsTeacher { get; set; }
+		public bool IsAdmin { get; set; }
 
         public virtual ICollection<Group> Groups { get; set; }
         public virtual ICollection<Result> Results { get; set; }

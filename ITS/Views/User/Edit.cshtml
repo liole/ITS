@@ -30,11 +30,27 @@
                 @Html.Label("Пароль")
                 @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
             </div>
-            <div class="form-group">
-                @Html.Label("Роль")
-                @Html.DropDownList("Role", (IEnumerable<SelectListItem>)ViewBag.Roles, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Role)
-            </div>
+            @if(ViewBag.AllowChooseRole)
+            {
+                <div class="form-group">
+                    @Html.Label("Адміністратор")
+                    @Html.CheckBoxFor(m => m.IsAdmin, new { @class = "form-control" })
+                </div>
+                @Html.Label("Учитель")
+                <div class="form-group">
+                    @Html.CheckBoxFor(m => m.IsTeacher, new { @class = "form-control" })
+                </div>
+                @Html.Label("Учень")
+                <div class="form-group">
+                    @Html.CheckBoxFor(m => m.IsStudent, new { @class = "form-control" })
+                </div>
+            } 
+            else
+            {
+                @Html.HiddenFor(m => m.IsAdmin)
+                @Html.HiddenFor(m => m.IsTeacher)
+                @Html.HiddenFor(m => m.IsStudent)
+            }
         </div>
         <div class="panel-footer">
             <a href="@Url.Action("List", "User")" class="btn btn-default">

@@ -24,7 +24,7 @@ namespace ITS.Migrations
 					LastName = "Admin",
 					Login = "admin",
 					Password = Crypto.HashPassword("admin"),
-					Role = UserRole.Admin
+					IsAdmin = true
 				});
         }
     }

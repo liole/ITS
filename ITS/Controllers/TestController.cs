@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ITS.Models;
+using ITS.Infrastructure;
 
 namespace ITS.Controllers
 {
+	[Auth(UserRole.Teacher)]
     public class TestController : Controller
     {
 		private IUnitOfWork unitOfWork;
@@ -17,7 +19,8 @@ namespace ITS.Controllers
 		{
 			this.unitOfWork = uow;
 		}
- 
+
+		[Auth(UserRole.Student)]
 		public ActionResult Assigned()
 		{
 			var user = CurrentUser();
@@ -48,6 +51,7 @@ namespace ITS.Controllers
 			return View(test);
 		}
 
+		[Auth(UserRole.Student, UserRole.Teacher)]
 		public ActionResult Take(int id, bool save = true)
 		{
 			var test = unitOfWork.Tests.GetByID(id);
@@ -138,6 +142,7 @@ namespace ITS.Controllers
 		}
 
 		[HttpPost]
+		[Auth(UserRole.Student, UserRole.Teacher)]
 		public ActionResult Check(TestAnswersModel answers, bool save = true)
 		{
 			//return Newtonsoft.Json.JsonConvert.SerializeObject(answers);

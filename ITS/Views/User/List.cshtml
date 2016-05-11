@@ -18,7 +18,7 @@
                 <th class="text-center">Прізвище</th>
                 <th class="text-center">Ім'я</th>
                 <th class="text-center">Логін</th>
-                <th class="text-center">Роль</th>
+                <th class="text-center">Ролі</th>
                 <th class="text-center">Дії</th>
             </tr>
             @foreach (var item in Model.Users)
@@ -27,7 +27,21 @@
                     <td class="text-center">@item.LastName</td>
                     <td class="text-center">@item.FirstName</td>
                     <td class="text-center">@item.Login</td>
-                    <td class="text-center">@item.Role</td>
+                    <td class="text-center">
+                        @{
+                            var roles = new List<string>();
+                            if (item.IsAdmin) {
+                                roles.Add("Адміністратор");
+                            }
+                            if (item.IsTeacher) {
+                                roles.Add("Учитель");
+                            }
+                            if (item.IsStudent) {
+                                roles.Add("Учень");
+                            }
+                        }
+                        @String.Join(", ", roles)
+                    </td>
                     <td class="text-center">
                             @*@using (Html.BeginForm("Delete", "User"))
                             {
