@@ -48,7 +48,7 @@ namespace ITS.Controllers
                     {
                         if (profile.NewPassword == profile.ConfirmPassword)
                         {
-                            user.Password = Crypto.Hash(profile.NewPassword);
+                            user.Password = Crypto.HashPassword(profile.NewPassword);
                         }
                     }
                 }

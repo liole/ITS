@@ -57,6 +57,10 @@
     }
 });
 */
+setTimeout(function () {
+    $('#alert').fadeOut(1000);
+}, 3000);
+
 function markAnswer(order, letter) {
     $('#question_' + order + ' .A .abcd_letter').removeClass('marked');
     $('#question_' + order + ' .B .abcd_letter').removeClass('marked');
