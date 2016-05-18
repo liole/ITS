@@ -1,0 +1,11 @@
+﻿@model ITS.Domain.Entities.NumberQuestion
+
+<div class="questionText">
+    @Model.QuestionText
+    <div class="pull-right pointsDetails">
+        (<em>бали</em> <strong>&times; @Model.Coefficient.ToString("0.##")</strong>)
+    </div>
+</div>
+<div class="answerDetails">
+    Відповідь: <strong>@Model.Answer.ToString("0.###")</strong>
+</div>

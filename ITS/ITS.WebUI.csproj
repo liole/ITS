@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201605112120279_UserRoleToMultiple.Designer.cs">
       <DependentUpon>201605112120279_UserRoleToMultiple.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605180957214_NumberQuestion.cs" />
+    <Compile Include="Migrations\201605180957214_NumberQuestion.Designer.cs">
+      <DependentUpon>201605180957214_NumberQuestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GroupsListViewModel.cs" />
     <Compile Include="Models\GroupTestViewModel.cs" />
@@ -236,6 +240,9 @@
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\Results.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Question\NumberEditor.cshtml" />
+    <Content Include="Views\Question\DetailsNumber.cshtml" />
+    <Content Include="Views\Question\TakeNumber.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -256,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605112120279_UserRoleToMultiple.resx">
       <DependentUpon>201605112120279_UserRoleToMultiple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605180957214_NumberQuestion.resx">
+      <DependentUpon>201605180957214_NumberQuestion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

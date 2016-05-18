@@ -53,6 +53,7 @@
     <Compile Include="Entities\ABCDQuestion.cs" />
     <Compile Include="Entities\EFDbContext.cs" />
     <Compile Include="Entities\Group.cs" />
+    <Compile Include="Entities\NumberQuestion.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\Result.cs" />
     <Compile Include="Entities\Subject.cs" />

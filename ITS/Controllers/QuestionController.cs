@@ -32,6 +32,10 @@ namespace ITS.Controllers
 			{
 				return View("TextEditor", question);
 			}
+			if (question is NumberQuestion)
+			{
+				return View("NumberEditor", question);
+			}
 			throw new InvalidOperationException();
 		}
 
@@ -42,7 +46,7 @@ namespace ITS.Controllers
 				TestID = id
 			};
 			ViewBag.Create = true;
-			ViewBag.ABCDList = selectABCDList();
+			ViewBag.ABCDList = selectABCDList(ABCDAnswer.A);
 			return View("ABCDEditor", question);
 		}
 		public ActionResult CreateText(int id)
@@ -53,6 +57,15 @@ namespace ITS.Controllers
 			};
 			ViewBag.Create = true;
 			return View("TextEditor", question);
+		}
+		public ActionResult CreateNumber(int id)
+		{
+			var question = new NumberQuestion()
+			{
+				TestID = id
+			};
+			ViewBag.Create = true;
+			return View("NumberEditor", question);
 		}
 
 		[HttpPost]
@@ -65,6 +78,11 @@ namespace ITS.Controllers
 		{
 			return Edit(question);
 		}
+		[HttpPost]
+		public ActionResult EditNumber(NumberQuestion question)
+		{
+			return Edit(question);
+		}
 
 		[HttpPost]
 		public ActionResult CreateABCD(ABCDQuestion question)
@@ -73,6 +91,11 @@ namespace ITS.Controllers
 		}
 		[HttpPost]
 		public ActionResult CreateText(TextQuestion question)
+		{
+			return Create(question);
+		}
+		[HttpPost]
+		public ActionResult CreateNumber(NumberQuestion question)
 		{
 			return Create(question);
 		}
@@ -103,7 +126,7 @@ namespace ITS.Controllers
 			return RedirectToAction("Details", "Test", new { id = testID });
 		}
 
-		private List<SelectListItem> selectABCDList(ABCDAnswer selected = ABCDAnswer.A)
+		private List<SelectListItem> selectABCDList(ABCDAnswer selected)
 		{
 			var list = new List<SelectListItem>();
 			for (var i = 0; i < 4; ++i)

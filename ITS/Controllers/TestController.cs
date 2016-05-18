@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using ITS.Models;
 using ITS.Infrastructure;
+using System.Globalization;
 
 namespace ITS.Controllers
 {
@@ -162,6 +163,11 @@ namespace ITS.Controllers
 				if (question is TextQuestion)
 				{
 					if ((question as TextQuestion).Answer == ans.Answer)
+						right = true;
+				}
+				if (question is NumberQuestion)
+				{
+					if ((question as NumberQuestion).Answer == decimal.Parse(ans.Answer, CultureInfo.InvariantCulture))
 						right = true;
 				}
 				max += question.Coefficient;

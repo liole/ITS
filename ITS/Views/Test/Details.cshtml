@@ -46,6 +46,10 @@
         {
             @Html.Partial(@"~/Views/Question/DetailsText.cshtml", question);
         }
+        @if (question is NumberQuestion)
+        {
+            @Html.Partial(@"~/Views/Question/DetailsNumber.cshtml", question);
+        }
     </div>
 }
 <h4>Додати запитання</h4>
@@ -55,13 +59,9 @@
         <span class="glyphicon glyphicon-th-list"></span>
         варіанти
     </a>
-    <a href="@Url.Action("CreateWord", "Question", new { id = Model.ID })" class="btn btn-default">
-        <span class="glyphicon glyphicon-font"></span>
-        слово
-    </a>
     <a href="@Url.Action("CreateText", "Question", new { id = Model.ID })" class="btn btn-default">
         <span class="glyphicon glyphicon-text-size"></span>
-        речення
+        текст
     </a>
     <a href="@Url.Action("CreateNumber", "Question", new { id = Model.ID })" class="btn btn-default">
         <span class="numberIcon">2</span>

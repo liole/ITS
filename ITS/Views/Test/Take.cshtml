@@ -31,6 +31,10 @@
             {
                 @Html.Partial("~/Views/Question/TakeText.cshtml", question, new ViewDataDictionary() { { "order", i } });
             }
+            @if (question is NumberQuestion)
+            {
+                @Html.Partial("~/Views/Question/TakeNumber.cshtml", question, new ViewDataDictionary() { { "order", i } });
+            }
         </div>
         { i++; }
     }

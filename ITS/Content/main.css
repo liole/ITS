@@ -1,6 +1,9 @@
 ﻿body {
     background: url('/Images/background1.jpg');
 }
+.minh {
+    min-height: 300px;
+}
 .title {
     font-weight: bold;
     font-size: 5em;
