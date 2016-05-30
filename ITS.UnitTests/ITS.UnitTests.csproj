@@ -59,9 +59,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MvcFakes\FakeControllerContext.cs" />
+    <Compile Include="MvcFakes\FakeHttpContext.cs" />
+    <Compile Include="MvcFakes\FakeHttpRequest.cs" />
+    <Compile Include="MvcFakes\FakeHttpSessionState.cs" />
+    <Compile Include="MvcFakes\FakeIdentity.cs" />
+    <Compile Include="MvcFakes\FakePrincipal.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionTests.cs" />
+    <Compile Include="TestTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ITS.Domain\ITS.Domain.csproj">
