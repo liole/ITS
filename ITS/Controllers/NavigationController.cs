@@ -26,8 +26,19 @@ namespace ITS.Controllers
 				return PartialView(null);
 			}
 			var menuList = new List<LinkViewModel>();
-			string controller = ControllerContext.ParentActionViewContext.RouteData.Values["controller"].ToString();
-			string action = ControllerContext.ParentActionViewContext.RouteData.Values["action"].ToString();
+
+			string controller = "None";
+			string action = "None";
+
+			try
+			{
+				controller = ControllerContext.ParentActionViewContext.RouteData.Values["controller"].ToString();
+				action = ControllerContext.ParentActionViewContext.RouteData.Values["action"].ToString();
+			}
+			catch(Exception)
+			{
+
+			}
 
 			if (user.IsStudent)
 			{
