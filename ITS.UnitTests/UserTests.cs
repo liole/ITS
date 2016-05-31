@@ -33,17 +33,20 @@ namespace ITS.UnitTests
 				new User() {
 					ID = 1,
 					FirstName = "John",
-					LastName = "Stuart"
+					LastName = "Stuart",
+                    Groups = new List<Group>()
 				},
 				new User() {
 					ID = 2,
 					FirstName = "Sam",
-					LastName = "Jones"
+					LastName = "Jones",
+                    Groups = new List<Group>()
 				},
 				new User() {
 					ID = 3,
 					FirstName = "Bob",
-					LastName = "Samuel"
+					LastName = "Samuel",
+                    Groups = new List<Group>()
 				}
 			};
 
@@ -52,14 +55,17 @@ namespace ITS.UnitTests
                 new Group()
                 {
                     ID = 1,
-                    Name = "Group1"
+                    Name = "Group1",
+                    Users = new List<User>()
                 },
                 new Group()
                 {
                     ID = 2,
-                    Name = "Group2"
+                    Name = "Group2",
+                    Users = new List<User>()
                 }
             };
+            users[2].Groups.Add(groups[0]);
             currentUser = users[0];
 
             gMockRepository = new Mock<IGenericRepository<Group>>();
@@ -210,6 +216,38 @@ namespace ITS.UnitTests
 
             mockRepository.Verify(r => r.Delete(users[0]));
             mockRepository.Verify(r => r.Save());
+        }
+
+        [TestMethod]
+        public void AddGroup()
+        {
+            var res = controller.AddGroup(1,3);
+            Assert.IsInstanceOfType(res, typeof(RedirectToRouteResult));
+            var redirectRes = res as RedirectToRouteResult;
+
+            //Assert.AreEqual("Assign", redirectRes.RouteValues["action"]);
+            Assert.AreEqual(3, redirectRes.RouteValues["id"]);
+
+            //mockRepository.Verify(r => r.Update(users[2]));
+            mockRepository.Verify(r => r.Save());
+            var collection = users[2].Groups as ICollection;
+            CollectionAssert.Contains(collection, groups[0]);
+        }
+
+        [TestMethod]
+        public void RemoveGroup()
+        {
+            var res = controller.RemoveGroup(1, 3);
+            Assert.IsInstanceOfType(res, typeof(RedirectToRouteResult));
+            var redirectRes = res as RedirectToRouteResult;
+
+            //Assert.AreEqual("Assign", redirectRes.RouteValues["action"]);
+            Assert.AreEqual(3, redirectRes.RouteValues["id"]);
+
+            //mockRepository.Verify(r => r.Update(users[2]));
+            mockRepository.Verify(r => r.Save());
+            var collection = users[2].Groups as ICollection;
+            CollectionAssert.DoesNotContain(collection, groups[0]);
         }
     }
 }
