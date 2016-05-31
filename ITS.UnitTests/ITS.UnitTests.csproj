@@ -65,11 +65,13 @@
     <Compile Include="MvcFakes\FakeHttpSessionState.cs" />
     <Compile Include="MvcFakes\FakeIdentity.cs" />
     <Compile Include="MvcFakes\FakePrincipal.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionTests.cs" />
     <Compile Include="TestTests.cs" />
     <Compile Include="NavigationTests.cs" />
+    <Compile Include="GroupTests.cs" />
+    <Compile Include="SubjectTests.cs" />
+    <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ITS.Domain\ITS.Domain.csproj">

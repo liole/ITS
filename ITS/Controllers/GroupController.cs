@@ -37,7 +37,7 @@ namespace ITS.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = unitOfWork.Users.GetAll().Count()
+                    TotalItems = unitOfWork.Groups.GetAll().Count()
                 }
             };
 
